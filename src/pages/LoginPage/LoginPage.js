@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import {Image, StyleSheet, Text, View, TextInput, Alert} from 'react-native';
+import {Image, StyleSheet, Text, View, TextInput, TouchableOpacity, Alert} from 'react-native';
 import LoginButtons from './LoginButtons/LoginButtons';
 
-export default class App extends Component {
-
-state = {
+export default class LoginPage extends Component{
+  state ={
+    ola: 'Funciona',
     email: '',
     senha: '',
-    emailCadastrado: '123',
+    emailCadastrado: 'teste@gmail.com',
     senhaCadastrado: '123',
     error: false
   }
@@ -19,48 +19,41 @@ state = {
     const senha2 = this.state.senhaCadastrado;
     
     if(email1 === email2 && senha1 === senha2){
-      Alert.alert(
-        'Funciona'
-      )
+        this.props.navigation.navigate('HomePage')
     } else {
       this.setState({error: true})
     }
   }
 
-  render() {
-
-    return (
-      <View style={styles.container}>
-        <Image style={styles.image} source={require('../../assets/lock.png')}/>
-        <TextInput
-          placeholder='Email'
-          style={styles.inputText}
-          onChangeText={(text => this.setState({ email: text }))} 
-        ></TextInput>
-        <TextInput
-          placeholder='Senha'
-          secureTextEntry
-          style={styles.inputText}
-          onChangeText={(text => this.setState({ senha: text }))}
-        ></TextInput>
-        {this.state.error ? <Text style={styles.erro}>Email ou senha incorretos</Text> : null}    
-        <LoginButtons 
-          botao={this.botaoLogin}/>
-      </View>
-    );
+  render(){
+    return(
+    <View style={styles.container}>
+      <Image style={styles.image} source={require('../../assets/lock.png')}/>
+      <TextInput
+        placeholder='Email'
+        style={styles.inputText}
+        onChangeText={(text => this.setState({ email: text }))}
+      ></TextInput>
+      <TextInput
+        placeholder='Senha'
+        secureTextEntry
+        style={styles.inputText}
+        onChangeText={(text => this.setState({ senha: text }))}
+      ></TextInput>
+      {this.state.error ? <Text style={styles.erro}>Email ou senha incorretos</Text> : null}
+      <LoginButtons botao={this.botaoLogin}/>  
+    </View>)}
   }
-}
 
-const styles = StyleSheet.create({
+  const styles = StyleSheet.create({
     container: {
       flex: 1,
       alignItems: 'center',
-      justifyContent: 'center',
       backgroundColor: '#FFF',
-      width: '100%', 
     },
   
     image: {
+      marginTop: 30,
       marginBottom: 20
     },
   
@@ -100,7 +93,7 @@ const styles = StyleSheet.create({
     botaoCriarConta: {
       height: 45,
       width: 150,
-      marginTop: 20, 
+      margin: 20,
       borderColor: 'gray', 
       borderWidth: 1,
       borderRadius: 30,
