@@ -2,13 +2,13 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import LoginPage from './../pages/LoginPage/LoginPage';
 import DrawerApp from './DrawerNavigation'
 
-const LoginValidation = createAppContainer(
+const LogOut = createAppContainer(
     createStackNavigator({
-      LoginPage: LoginPage,
-      DrawerApp: DrawerApp,
+        DrawerApp: DrawerApp,
+        LoginPage: LoginPage,
     }, {
-      headerMode: 'none',
+      headerMode: 'none'
     }),
   );
 
-export default LoginValidation;
+export default LogOut;

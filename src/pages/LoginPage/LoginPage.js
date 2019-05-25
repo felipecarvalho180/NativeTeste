@@ -3,11 +3,15 @@ import {Image, StyleSheet, Text, View, TextInput, TouchableOpacity, Alert} from 
 import LoginButtons from './LoginButtons/LoginButtons';
 
 export default class LoginPage extends Component{
+  static navigationOptions = {
+    title: 'LogOut',
+  };
+
   state ={
     ola: 'Funciona',
     email: '',
     senha: '',
-    emailCadastrado: 'teste@gmail.com',
+    emailCadastrado: '123',
     senhaCadastrado: '123',
     error: false
   }
@@ -19,7 +23,7 @@ export default class LoginPage extends Component{
     const senha2 = this.state.senhaCadastrado;
     
     if(email1 === email2 && senha1 === senha2){
-        this.props.navigation.navigate('HomePage')
+        this.props.navigation.navigate('DrawerApp')
     } else {
       this.setState({error: true})
     }
@@ -49,11 +53,11 @@ export default class LoginPage extends Component{
     container: {
       flex: 1,
       alignItems: 'center',
+      justifyContent: 'center',
       backgroundColor: '#FFF',
     },
   
     image: {
-      marginTop: 30,
       marginBottom: 20
     },
   
