@@ -1,12 +1,14 @@
-import {createStackNavigator, createAppContainer} from 'react-navigation';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 import LoginPage from './../pages/LoginPage/LoginPage';
-import HomePage from './../pages/HomePage/HomePage';
+import DrawerApp from './DrawerNavigation'
 
-const Routes = createAppContainer(
+const LoginValidation = createAppContainer(
     createStackNavigator({
       LoginPage: LoginPage,
-      HomePage: HomePage,
-    })
+      DrawerApp: DrawerApp,
+    }, {
+      headerMode: 'none',
+    }),
   );
 
-export default Routes;
+export default LoginValidation;

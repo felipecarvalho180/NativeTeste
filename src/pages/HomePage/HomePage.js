@@ -1,25 +1,43 @@
-import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import React, {Component} from 'react'
+import { Text, StyleSheet} from 'react-native'
+import {Container, Content, Header, Left, Icon, Right} from 'native-base'
 
-const HomePage = () => ( 
-    <View style={styles.container}>
-        <Text style={styles.home}>Home</Text>
-    </View>
-)
 
-HomePage.navigationOptions = {
-    title: 'Home',
-  }
+export default class HomePage extends Component {
+    static navigationOptions = {
+        title: 'Home'
+      };
+
+    render() {
+        
+        return(
+            <Container>
+                <Header androidStatusBarColor="#fff" style={styles.head}> 
+                    <Left> 
+                        <Icon 
+                            name='ios-menu'
+                            color='#fff'
+                            onPress={() => {this.props.navigation.openDrawer()}} />
+                    </Left> 
+                    <Right></Right>
+                </Header>
+                <Content contentContainerStyle={{
+                    flex: 1,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}>
+                    <Text style={styles.home}>Home</Text>
+                </Content>
+            </Container>
+        )
+    }
+}
+
 const styles = StyleSheet.create({
-    container:{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#fff'
-    },
     home: {
         fontSize: 20
     },
+    head: {
+        backgroundColor: '#fff' 
+    }
 })
-
-export default HomePage;

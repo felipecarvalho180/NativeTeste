@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import {Image, StyleSheet, Text, View, TextInput, TouchableOpacity, Alert} from 'react-native';
+import {Image, StyleSheet, Text, View, TextInput} from 'react-native';
 import LoginButtons from './LoginButtons/LoginButtons';
+import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
 export default class LoginPage extends Component{
   state ={
-    ola: 'Funciona',
     email: '',
     senha: '',
-    emailCadastrado: 'teste@gmail.com',
+    emailCadastrado: '123@gmail.com',
     senhaCadastrado: '123',
     error: false
   }
@@ -19,7 +19,8 @@ export default class LoginPage extends Component{
     const senha2 = this.state.senhaCadastrado;
     
     if(email1 === email2 && senha1 === senha2){
-        this.props.navigation.navigate('HomePage')
+        this.props.navigation.navigate('DrawerApp')
+        this.setState({error: false})
     } else {
       this.setState({error: true})
     }
@@ -28,7 +29,7 @@ export default class LoginPage extends Component{
   render(){
     return(
     <View style={styles.container}>
-      <Image style={styles.image} source={require('../../assets/lock.png')}/>
+      <Icon name="lock" color='#666' size={80} style={styles.image}/>
       <TextInput
         placeholder='Email'
         style={styles.inputText}
@@ -40,7 +41,7 @@ export default class LoginPage extends Component{
         style={styles.inputText}
         onChangeText={(text => this.setState({ senha: text }))}
       ></TextInput>
-      {this.state.error ? <Text style={styles.erro}>Email ou senha incorretos</Text> : null}
+      {!this.state.error ? null : <Text style={styles.erro}>Email ou senha incorretos</Text>}
       <LoginButtons botao={this.botaoLogin}/>  
     </View>)}
   }
@@ -49,11 +50,11 @@ export default class LoginPage extends Component{
     container: {
       flex: 1,
       alignItems: 'center',
+      justifyContent: 'center',
       backgroundColor: '#FFF',
     },
   
     image: {
-      marginTop: 30,
       marginBottom: 20
     },
   
@@ -69,7 +70,8 @@ export default class LoginPage extends Component{
       width: '80%', 
       margin: 10,
       color: 'gray',
-      paddingLeft: 15
+      paddingLeft: 15,
+      textDecorationLine: 'none'
     },
   
     botaoEsqSenha: {
