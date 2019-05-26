@@ -1,16 +1,22 @@
 import React, {Component} from 'react'
-import { View, Text, StyleSheet, Button} from 'react-native'
+import { Text, StyleSheet} from 'react-native'
 import {Container, Content, Header, Left, Icon, Right} from 'native-base'
 
 
 export default class HomePage extends Component {
+    static navigationOptions = {
+        title: 'Home'
+      };
+
     render() {
+        
         return(
             <Container>
-                <Header androidStatusBarColor="#666" style={styles.head}> 
+                <Header androidStatusBarColor="#fff" style={styles.head}> 
                     <Left> 
                         <Icon 
                             name='ios-menu'
+                            color='#fff'
                             onPress={() => {this.props.navigation.openDrawer()}} />
                     </Left> 
                     <Right></Right>
@@ -27,15 +33,11 @@ export default class HomePage extends Component {
     }
 }
 
-HomePage.navigationOptions = {
-    title: 'Home',
-  }
-
 const styles = StyleSheet.create({
     home: {
         fontSize: 20
     },
     head: {
-        backgroundColor: '#666' 
+        backgroundColor: '#fff' 
     }
 })
